@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Category>
+
+<ol>
+
+    @foreach(var temp in Model)
+            {
+                <li>
+                    <a asp-action="GetProduct" asp-controller="Home" asp-route-id="@temp.CategoryID">@temp.CategoryName</a>
+
+                </li>
+            } 
+
+</ol>

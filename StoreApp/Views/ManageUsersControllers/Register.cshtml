@@ -1,0 +1,57 @@
+﻿@model UserRegistrationVM
+
+
+<div class="men">
+    <div class="container">
+        <div class="col-md-12 register">
+            <form asp-action="Register">
+                <div class="register-top-grid">
+                    <h3>PERSONAL INFORMATION</h3>
+                    <div>
+                        <span>First Name<label>*</label></span>
+                        <input asp-for="FirstName">
+                    </div>
+                    <div>
+                        <span>Last Name<label>*</label></span>
+                        <input asp-for="LastName">
+                    </div>
+
+                    <div>
+                        <span>Adress<label>*</label></span>
+                        <input asp-for="Address">
+                    </div>
+                    <div>
+                        <span>Mobile Number<label>*</label></span>
+                        <input asp-for="MobileNo">
+                    </div>
+                    
+
+                 
+
+
+                    <h3>LOGIN INFORMATION</h3>
+                    <div>
+                        <span>Password<label>*</label></span>
+                        <input asp-for="Password">
+                    </div>
+                    
+                    <div>
+                        <span>Enail Address<label>*</label></span>
+                        <input asp-for="EmailID">
+                    </div>
+                    <div>
+                        <span>Confirm Password<label>*</label></span>
+                        <input asp-for="ConfirmPassword">
+                    </div>
+
+                </div>
+            
+            <div class="clearfix"> </div>
+            <div class="register-but"></div>
+                
+                    <input type="submit" value="Submit" class="btn btn-danger">
+                    <div class="clearfix"> </div>
+                </form>
+            </div>
+        </div>
+    </div>

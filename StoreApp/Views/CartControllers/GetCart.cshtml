@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model IEnumerable<Cart>
+
+<div style="padding:20px" class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="text-danger text-center"> Cart For : (@Context.Session.GetString("UserName"))</h2>
+            <br />
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+                @{ int srno = 1; decimal? amount, totalamount = 0; }
+                @foreach(var temp in Model)
+                {
+                    amount = temp.Qty * temp.Price;
+                    totalamount = totalamount + amount;
+                    <tr>
+                        <td>@srno</td>
+                        <td>@temp.Product.ProductName</td>
+                        <td>@temp.Qty</td>
+                        <td>@temp.Price</td>
+                        <td>@amount</td>
+                        <td>
+                            <a class="btn btn-danger" asp-action="DeleteCart" asp-controller="CartControllers" asp-route-id="@temp.CartID">Delete</a>
+                        </td>
+                    </tr>
+                    srno++;
+                }
+                <tr>
+                    <td colspan="5" class="text-danger text-right">Total : @totalamount</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class=" text-danger text right">
+                        <form asp-action="MakePayment" asp-controller="CartControllers">
+                            Select Payement Mode : 
+                            <select name="PaymentMode" asp-items="@ViewBag.PaymentMode"></select>
+                            <input type="submit" value="Make Payment" class="btn btn-danger" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

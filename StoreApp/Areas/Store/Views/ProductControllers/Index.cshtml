@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Products</h1>
+
+<div>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create</a>
+    </p>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Price</th>
+            <th>Category</th>
+        </tr>
+        @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@temp.ProductID</td>
+                    <td>@temp.ProductName</td>
+                    <td>@temp.ProdDesc</td>
+                    <td>@temp.Price</td>
+                    <td>@temp.Category.CategoryName</td>
+                    <td><img src="@temp.photopath" width="40" height="35"/></td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@temp.ProductID" class="btn btn-success">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@temp.ProductID" class="btn btn-success" >Delete</a>
+                    </td>
+                </tr>
+            }
+    </table>
+</div>

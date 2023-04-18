@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MainCategory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Main Category List</h1>
+<div>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create</a>
+    </p>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Main Category ID</th>
+            <th>Main Category Names</th>
+            <th></th>
+        </tr>
+        @foreach(var temp in Model)
+            {
+                <tr>
+                    <td>@temp.MainCategoryID</td>
+                    <td>@temp.MainCategoryName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@temp.MainCategoryID" class="btn btn-success">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@temp.MainCategoryID" class="btn btn-success">Delete</a>
+                    </td>
+                </tr>
+            }
+    </table>
+</div>
+

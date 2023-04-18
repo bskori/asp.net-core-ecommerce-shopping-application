@@ -1,0 +1,40 @@
+﻿@model IEnumerable<UserOrderDispatch>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <br />
+            <br />
+
+                <h2 class="alert-danger text-center">@ViewBag.Message</h2>
+            <br />
+            <br />
+            @if (Model != null)
+            {
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Dispatch Date</th>
+                        <th>Agency Name</th>
+                        <th>Expected Reach Date</th>
+                    </tr>
+                    @foreach (var temp in Model)
+                    {
+                        <tr>
+                            <td>@temp.UserOrderID</td>
+                            <td>@temp.DispatchDate</td>
+                            <td>@temp.DispatchAgency.DispatchAgencyName</td>
+                            <td>@temp.ExpectedReachDate</td>
+                        </tr>
+                    }
+
+                </table>
+            }
+
+        </div>
+
+    </div>
+
+</div>
